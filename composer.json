@@ -1,0 +1,16 @@
+{
+    "name": "emanuel/cizagui",
+    "description": "Sistema de Gerenciamento de Agendamentos",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "EmanuelAry",
+            "email": "emanuel2003ary@gmail.com"
+        }
+    ],
+    "require": {}
+}
