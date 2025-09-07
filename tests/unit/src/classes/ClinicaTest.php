@@ -4,8 +4,7 @@ namespace Tests\Unit\App\Classes;
 use App\Classes\Clinica;
 use PHPUnit\Framework\TestCase;
 
-class ClinicaTest extends TestCase
-{
+class ClinicaTest extends TestCase {
     /** @test */
     public function pode_ser_criada_com_array_vazio()
     {

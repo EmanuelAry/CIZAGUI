@@ -3,7 +3,7 @@
         'name' => 'emanuel/cizagui',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'b3981b1b6a37d94b9d32ddde9a202617ce468361',
+        'reference' => 'b59d0e4cc37d0a19a46197941794a0bfb876014e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'emanuel/cizagui' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'b3981b1b6a37d94b9d32ddde9a202617ce468361',
+            'reference' => 'b59d0e4cc37d0a19a46197941794a0bfb876014e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
