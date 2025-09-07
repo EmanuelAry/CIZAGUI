@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true"
+         bootstrap="vendor/autoload.php"
+         verbose="true">
+    <testsuites>
+        <testsuite name="Testes Unitários Classe Clinica">
+            <directory>.\vendor\tests\unit\classes</directory>
+        </testsuite>
+    </testsuites>
+
+    <testsuites>
+        <testsuite name="Testes Unitários Classe Clinica">
+            <directory>.\vendor\tests\unit\classes</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

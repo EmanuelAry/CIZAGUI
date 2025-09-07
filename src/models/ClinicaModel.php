@@ -14,13 +14,14 @@ class ClinicaModel {
             throw new \Exception("Dados da clínica inválidos");
         }
 
-        $sql = "INSERT INTO clinica (nome, cnpj)
-                VALUES (?, ?)";
+        $sql = "INSERT INTO clinica (clinica_nome, clinica_cnpj, clinica_senha)
+                VALUES (?, ?, ?)";
         
         $stmt = $this->pdo->prepare($sql);
         $success = $stmt->execute([
             $clinica->getNome(),
-            $clinica->getCnpj()
+            $clinica->getCnpj(),
+            $clinica->getSenha(),
         ]);
 
         if ($success) {
@@ -31,7 +32,7 @@ class ClinicaModel {
     }
 
     public function read($id) {
-        $sql = "SELECT * FROM clinica WHERE clinica_id = ? AND status = 1";
+        $sql = "SELECT * FROM clinica WHERE clinica_id = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id]);
         
@@ -44,44 +45,33 @@ class ClinicaModel {
             throw new \Exception("Dados da clínica inválidos");
         }
 
-        $sql = "UPDATE clinica SET nome = ?, cnpj = ?
+        $sql = "UPDATE clinica SET clinica_nome = ?, clinica_cnpj = ?
                 WHERE clinica_id = ?";
         
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([
             $clinica->getNome(),
             $clinica->getCnpj(),
-            $clinica->getId()
+            $clinica->getId(),
         ]);
     }
 
     public function delete($id) {
-        // Soft delete - marca como inativo
-        $sql = "UPDATE clinica SET status = 0 WHERE clinica_id = ?";
+        $sql = "DELETE FROM clinica WHERE clinica_id = ?";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$id]);
     }
 
     public function getAll($filters = []) {
-        $sql = "SELECT * FROM clinica WHERE status = 1";
+        $sql = "SELECT * FROM clinica";
         $params = [];
 
         // Aplicar filtros
         if (!empty($filters['nome'])) {
-            $sql .= " AND nome LIKE ?";
+            $sql .= " AND clinica_nome LIKE ?";
             $params[] = '%' . $filters['nome'] . '%';
         }
-
-        if (!empty($filters['cidade'])) {
-            $sql .= " AND cidade = ?";
-            $params[] = $filters['cidade'];
-        }
-
-        if (!empty($filters['estado'])) {
-            $sql .= " AND estado = ?";
-            $params[] = $filters['estado'];
-        }
-
+        
         $sql .= " ORDER BY nome";
 
         $stmt = $this->pdo->prepare($sql);
@@ -96,7 +86,7 @@ class ClinicaModel {
     }
 
     public function getClinicaByCnpj($cnpj) {
-        $sql = "SELECT * FROM clinica WHERE cnpj = ? AND status = 1";
+        $sql = "SELECT * FROM clinica WHERE clinica_cnpj = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$cnpj]);
         

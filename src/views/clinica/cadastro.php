@@ -77,7 +77,12 @@
                                            placeholder="00.000.000/0000-00" maxlength="18">
                                     <div class="invalid-feedback">CNPJ inválido.</div>
                                 </div>
-                            </div>
+
+                               <div class="col-md-12 mb-3">
+                                    <label for="senha" class="form-label required-field">Senha</label>
+                                    <input type="password" class="form-control" id="senha" name="senha" required>
+                                    <div class="invalid-feedback">Senha Inválida</div>
+                                </div>
                             
                             <!-- Botões -->
                             <div class="row">
@@ -112,6 +117,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script>
     <script>
         // Máscaras para os campos
         function aplicarMascaras() {
@@ -183,8 +189,9 @@
         document.getElementById('formCadastroClinica').addEventListener('submit', async function(e) {
             e.preventDefault();
             // Validar campos obrigatórios
-            const nome = document.getElementById('nome');
-            const cnpj = document.getElementById('cnpj');
+            const nome  = document.getElementById('nome');
+            const cnpj  = document.getElementById('cnpj');
+            const senha = document.getElementById('senha');
             let isValid = true;
             if (!nome.value.trim()) {
                 nome.classList.add('is-invalid');
@@ -219,6 +226,7 @@
             const dados = {
                 nome: nome.value,
                 cnpj: cnpj.value.replace(/\D/g, ''),
+                senha: md5(senha) 
             };
 
             try {
@@ -252,7 +260,6 @@
                 }
                 
             } catch (error) {
-                debugger;
                 Swal.fire({
                     icon: 'error',
                     title: 'Erro',

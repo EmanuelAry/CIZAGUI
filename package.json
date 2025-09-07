@@ -1,0 +1,25 @@
+{
+  "name": "cizagui",
+  "version": "1.0.0",
+  "description": "sistema de agendamento",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmanuelAry/CIZAGUI.git"
+  },
+  "author": "Emanuel Ary de Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmanuelAry/CIZAGUI/issues"
+  },
+  "homepage": "https://github.com/EmanuelAry/CIZAGUI#readme",
+  "dependencies": {
+    "blueimp-md5": "^2.19.0"
+  }
+}

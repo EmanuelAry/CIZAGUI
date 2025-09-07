@@ -9,11 +9,7 @@ class ClinicaController {
 
     public function __construct($pdo) {
         $this->pdo = $pdo;
-        try {
-            $this->model = new ClinicaModel($pdo);
-        } catch (\PDOException $e) {
-            return $e->getMessage();
-        }
+        $this->model = new ClinicaModel($pdo);
     }
 
     public function handleRequest($method, $data = null, $id = null) {
@@ -60,8 +56,8 @@ class ClinicaController {
 
     private function handlePostRequest($data) {
         // Validação básica
-        if (empty($data['nome']) || empty($data['cnpj']) || empty($data['email'])) {
-            return ['success' => false, 'message' => 'Campos obrigatórios: nome, CNPJ e email'];
+        if (empty($data['nome']) || empty($data['cnpj']) || empty($data['senha'])) {
+            return ['success' => false, 'message' => 'Campos obrigatórios: nome, CNPJ, senha'];
         }
 
         // Verificar se CNPJ já existe
